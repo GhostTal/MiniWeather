@@ -1,5 +1,7 @@
 package com.nick.miniweather.bean;
 
+import android.widget.ImageView;
+
 public class TodayWeather {
     private String city;
     private String updatetime;
@@ -9,10 +11,12 @@ public class TodayWeather {
     private String quality;
     private String winddir;
     private String windpower;
-    private String data;
+    private String date;
     private String high;
     private String low;
     private String type;
+    private ImageView weatherImg;
+    private ImageView pmImg;
 
     public String getCity() {
         return city;
@@ -22,9 +26,6 @@ public class TodayWeather {
         return updatetime;
     }
 
-    public String getTemperature() {
-        return temperature;
-    }
 
     public String getHumidity() {
         return humidity;
@@ -46,8 +47,8 @@ public class TodayWeather {
         return windpower;
     }
 
-    public String getData() {
-        return data;
+    public String getDate() {
+        return date;
     }
 
     public String getHigh() {
@@ -61,6 +62,24 @@ public class TodayWeather {
     public String getType() {
         return type;
     }
+
+
+    public ImageView getWeatherImg() {
+        return weatherImg;
+    }
+
+    public void setWeatherImg(ImageView weatherImg) {
+        this.weatherImg = weatherImg;
+    }
+
+    public ImageView getPmImg() {
+        return pmImg;
+    }
+
+    public void setPmImg(ImageView pmImg) {
+        this.pmImg = pmImg;
+    }
+
 
     public void setCity(String city) {
         this.city = city;
@@ -94,8 +113,8 @@ public class TodayWeather {
         this.windpower = windpower;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public void setHigh(String high) {
@@ -113,18 +132,18 @@ public class TodayWeather {
     @Override
     public String toString() {
         return "TodayWeather{" +
-                "city'" + city + "\'" +
-                "updatetime'" + updatetime + "\'" +
-                "temperature'" + temperature + "\'" +
-                "humidity'" + humidity + "\'" +
-                "pm25'" + pm25 + "\'" +
-                "quality'" + quality + "\'" +
-                "winddir'" + winddir + "\'" +
-                "windpower'" + windpower + "\'" +
-                "data'" + data + "\'" +
-                "high'" + high + "\'" +
-                "low'" + low + "\'" +
-                "type'" + type + "\'" +
+                "city='" + city + "\'" +
+                ",updatetime='" + updatetime + "\'" +
+                ",temperature='" + temperature + "\'" +
+                ",humidity='" + humidity + "\'" +
+                ",pm25='" + pm25 + "\'" +
+                ",quality'=" + quality + "\'" +
+                ",winddir='" + winddir + "\'" +
+                ",windpower='" + windpower + "\'" +
+                ",data='" + date + "\'" +
+                ",high='" + high + "\'" +
+                ",low='" + low + "\'" +
+                ",type='" + type + "\'" +
                 '}';
     }
 }

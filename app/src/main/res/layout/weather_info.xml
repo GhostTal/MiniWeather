@@ -245,6 +245,19 @@
                         android:text="微风"
                         android:textColor="@android:color/white"
                         android:textSize="20sp"/>
+
+                    <!--风向情况-->
+                    <TextView
+                        android:id="@+id/winddir"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/weather_img"
+                        android:layout_marginLeft="5dp"
+                        android:layout_below="@+id/wind"
+                        android:singleLine="true"
+                        android:text="东南风"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp"/>
                 </RelativeLayout>
 
             </RelativeLayout>
