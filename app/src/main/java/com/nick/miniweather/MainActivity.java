@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nick.miniweather.util.NetUtil;
@@ -30,6 +31,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     public static final String TAG = "WeatherMainActivity";
     private ImageView mUpdateBtn;
+    private TextView cityTv, timeTv, humidityTv, weekTv, pmDataTv, pmQualityTv,
+            temperatureTv, climateTv, windTv, city_name_tv;
+    private ImageView weatherImg, pmImg;
 
     /**
      * @param savedInstanceState
@@ -41,7 +45,39 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         mUpdateBtn = (ImageView) findViewById(R.id.title_update_btn);
         mUpdateBtn.setOnClickListener(this);
+
+        initView();
     }
+
+    /**
+     * 初始化天气数据
+     */
+    void initView() {
+        city_name_tv = (TextView) findViewById(R.id.title_city_name);//标题城市天气
+        cityTv = (TextView) findViewById(R.id.city);//城市
+        timeTv = (TextView) findViewById(R.id.time);//更新时间
+        humidityTv = (TextView) findViewById(R.id.humidity);//湿度
+        weekTv = (TextView) findViewById(R.id.week_today);//星期几
+        pmDataTv = (TextView) findViewById(R.id.pm_data);//pm2.5数据
+        pmQualityTv = (TextView) findViewById(R.id.pm2_5_quality);//pm2.5质量
+        pmImg = (ImageView) findViewById(R.id.pm2_5_img);//pm2.5图片
+        temperatureTv = (TextView) findViewById(R.id.temperature);//温度
+        climateTv = (TextView) findViewById(R.id.climate);//天气
+        windTv = (TextView) findViewById(R.id.wind);//风力
+        weatherImg = (ImageView) findViewById(R.id.weather_img);//天气图片
+
+        city_name_tv.setText("N/A");
+        cityTv.setText("N/A");
+        timeTv.setText("N/A");
+        humidityTv.setText("N/A");
+        pmDataTv.setText("N/A");
+        pmQualityTv.setText("N/A");
+        weekTv.setText("N/A");
+        temperatureTv.setText("N/A");
+        climateTv.setText("N/A");
+        weekTv.setText("N/A");
+    }
+
 
 
     /**
@@ -107,6 +143,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }).start();
     }
 
+    /**
+     * @param xmldata
+     */
     private void parseXML(String xmldata) {
 
         int windDirCount = 0;
