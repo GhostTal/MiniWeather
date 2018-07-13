@@ -303,9 +303,81 @@ public class MainActivity extends Activity implements View.OnClickListener {
         windTv.setText("风力:" + todayWeather.getWindpower());
         winddirTv.setText("风向:" + todayWeather.getWinddir());
 
-//        weatherImg.setImageIcon(todayWeather);
+        String weatherType = todayWeather.getType();
+        updateTodayWeatherImage(weatherType);
+
+        String pmData = todayWeather.getPm25();
+        updatePmImage(Integer.parseInt(pmData));
 
         Toast.makeText(MainActivity.this, "更新成功！", Toast.LENGTH_LONG).show();
 
+    }
+
+
+    /**
+     * update TodayWeather Image
+     *
+     * @param weatherType
+     */
+    private void updateTodayWeatherImage(String weatherType) {
+
+        if (weatherType.contains("晴")) {
+            weatherImg.setImageResource(R.drawable.biz_plugin_weather_qing);
+        } else if (weatherType.contains("小雨")) {
+            weatherImg.setImageResource(R.drawable.biz_plugin_weather_xiaoyu);
+        } else if (weatherType.contains("雷阵雨")) {
+            weatherImg.setImageResource(R.drawable.biz_plugin_weather_leizhenyu);
+        } else if (weatherType.contains("多云")) {
+            weatherImg.setImageResource(R.drawable.biz_plugin_weather_duoyun);
+        }  else if (weatherType.contains("阴")) {
+            weatherImg.setImageResource(R.drawable.biz_plugin_weather_yin);
+        } else if (weatherType.contains("中雨")) {
+            weatherImg.setImageResource(R.drawable.biz_plugin_weather_zhongyu);
+        } else if (weatherType.contains("大雨")) {
+            weatherImg.setImageResource(R.drawable.biz_plugin_weather_dayu);
+        } else if (weatherType.contains("大暴雨")) {
+            weatherImg.setImageResource(R.drawable.biz_plugin_weather_dabaoyu);
+        } else if (weatherType.contains("特大暴雨")) {
+            weatherImg.setImageResource(R.drawable.biz_plugin_weather_tedabaoyu);
+        } else if (weatherType.contains("雨夹雪")) {
+            weatherImg.setImageResource(R.drawable.biz_plugin_weather_yujiaxue);
+        } else if (weatherType.contains("雷阵雨冰雹")) {
+            weatherImg.setImageResource(R.drawable.biz_plugin_weather_leizhenyubingbao);
+        } else if (weatherType.contains("小雪")) {
+            weatherImg.setImageResource(R.drawable.biz_plugin_weather_xiaoxue);
+        } else if (weatherType.contains("中雪")) {
+            weatherImg.setImageResource(R.drawable.biz_plugin_weather_zhongxue);
+        } else if (weatherType.contains("阵雪")) {
+            weatherImg.setImageResource(R.drawable.biz_plugin_weather_zhenxue);
+        } else if (weatherType.contains("大雪")) {
+            weatherImg.setImageResource(R.drawable.biz_plugin_weather_daxue);
+        } else if (weatherType.contains("暴雪")) {
+            weatherImg.setImageResource(R.drawable.biz_plugin_weather_baoxue);
+        } else if (weatherType.contains("雾")) {
+            weatherImg.setImageResource(R.drawable.biz_plugin_weather_wu);
+        } else if (weatherType.contains("沙尘暴")) {
+            weatherImg.setImageResource(R.drawable.biz_plugin_weather_shachenbao);
+        }
+    }
+
+    /**
+     * update pm2.5 Image
+     *
+     * @param pmData
+     */
+    private void updatePmImage(int pmData) {
+        if (pmData >= 0 && pmData <= 50) {
+            pmImg.setImageResource(R.drawable.biz_plugin_weather_0_50);
+        } else if (pmData >= 51 && pmData <= 100) {
+            pmImg.setImageResource(R.drawable.biz_plugin_weather_51_100);
+        } else if (pmData >= 101 && pmData <= 150) {
+            pmImg.setImageResource(R.drawable.biz_plugin_weather_101_150);
+        } else if (pmData >= 151 && pmData <= 200) {
+            pmImg.setImageResource(R.drawable.biz_plugin_weather_151_200);
+        } else if (pmData >= 201 && pmData <= 300) {
+            pmImg.setImageResource(R.drawable.biz_plugin_weather_201_300);
+        } else if (pmData >= 300) {
+            pmImg.setImageResource(R.drawable.biz_plugin_weather_greater_300);
+        }
     }
 }
