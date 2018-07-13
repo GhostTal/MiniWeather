@@ -1,6 +1,7 @@
 package com.nick.miniweather;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -34,6 +35,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public static final String TAG = "WeatherMainActivity";
     public static final int  UPDATE_TODAY_WEATHER = 1;
     private ImageView mUpdateBtn;
+    private ImageView mCitySelect;
     private TextView cityTv, timeTv, humidityTv, weekTv, pmDataTv, pmQualityTv,
             temperatureTv, climateTv, windTv, winddirTv, city_name_tv;
     private ImageView weatherImg, pmImg;
@@ -59,6 +61,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.weather_info);
 
         mUpdateBtn = (ImageView) findViewById(R.id.title_update_btn);
+        mCitySelect = (ImageView) findViewById(R.id.title_city_manager);
+        mCitySelect.setOnClickListener(this);
         mUpdateBtn.setOnClickListener(this);
 
         initView();
@@ -114,6 +118,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 Log.d(TAG, "网络异常");
                 Toast.makeText(MainActivity.this, "网络异常", Toast.LENGTH_LONG).show();
             }
+        }
+
+        if (view.getId() == R.id.title_city_manager) {
+            Intent intent = new Intent(this, SelectCity.class);
+            startActivity(intent);
         }
     }
 

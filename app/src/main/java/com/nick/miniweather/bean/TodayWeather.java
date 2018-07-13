@@ -1,7 +1,5 @@
 package com.nick.miniweather.bean;
 
-import android.widget.ImageView;
-
 public class TodayWeather {
     private String city;
     private String updatetime;
@@ -15,8 +13,7 @@ public class TodayWeather {
     private String high;
     private String low;
     private String type;
-    private ImageView weatherImg;
-    private ImageView pmImg;
+
 
     public String getCity() {
         return city;
@@ -63,22 +60,6 @@ public class TodayWeather {
         return type;
     }
 
-
-    public ImageView getWeatherImg() {
-        return weatherImg;
-    }
-
-    public void setWeatherImg(ImageView weatherImg) {
-        this.weatherImg = weatherImg;
-    }
-
-    public ImageView getPmImg() {
-        return pmImg;
-    }
-
-    public void setPmImg(ImageView pmImg) {
-        this.pmImg = pmImg;
-    }
 
 
     public void setCity(String city) {
