@@ -122,7 +122,33 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         if (view.getId() == R.id.title_city_manager) {
             Intent intent = new Intent(this, SelectCity.class);
-            startActivity(intent);
+//            startActivity(intent);
+            //得到selectCity关闭后返回的数据，第二个参数为请求码，根据不同业务编写自己的编号
+            startActivityForResult(intent,1);
+        }
+    }
+
+    /**
+     * 为了得到选择SelectCity后返回的数据
+     *
+     * @param requestCode 请求码，即调用startActivityForResult传递的值
+     * @param resultCode 结果码，结果码用于标识返回的数据来自哪个新的Activity
+     * @param data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            String newCityCode = data.getStringExtra("cityCode");
+            Log.d(TAG, "选择城市的代码为： " + newCityCode);
+
+            if (NetUtil.getNetworkState(this) != NetUtil.NETWORK_NONE) {
+                Log.d(TAG, "网络ok");
+                queryWeatherCode(newCityCode);
+                Toast.makeText(MainActivity.this, "网络OK", Toast.LENGTH_LONG).show();
+            } else {
+                Log.d(TAG, "网络异常");
+                Toast.makeText(MainActivity.this, "网络异常", Toast.LENGTH_LONG).show();
+            }
         }
     }
 
@@ -136,7 +162,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             @Override
             public void run() {
                 HttpURLConnection connection = null;
-                TodayWeather todayWeather = null;
+                TodayWeather todayWeather;
                 try {
                     URL url = new URL(address);
                     //打开和URL之间的链接
