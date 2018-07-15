@@ -32,15 +32,15 @@ import java.net.URL;
  */
 public class MainActivity extends Activity implements View.OnClickListener {
 
-    public static final String TAG = "WeatherMainActivity";
-    public static final int  UPDATE_TODAY_WEATHER = 1;
+    private static final String TAG = "WeatherMainActivity";
+    private static final int  UPDATE_TODAY_WEATHER = 1;
     private ImageView mUpdateBtn;
     private ImageView mCitySelect;
     private TextView cityTv, timeTv, humidityTv, weekTv, pmDataTv, pmQualityTv,
             temperatureTv, climateTv, windTv, winddirTv, city_name_tv;
     private ImageView weatherImg, pmImg;
 
-    private Handler mHandler = new Handler() {
+    private final Handler mHandler = new Handler() {
         public void handleMessage(android.os.Message msg) {
             switch (msg.what) {
                 case UPDATE_TODAY_WEATHER:
@@ -71,7 +71,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     /**
      * 初始化天气数据
      */
-    void initView() {
+    private void initView() {
         city_name_tv = (TextView) findViewById(R.id.title_city_name);//标题城市天气
         cityTv = (TextView) findViewById(R.id.city);//城市
         timeTv = (TextView) findViewById(R.id.time);//更新时间

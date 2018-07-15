@@ -8,10 +8,11 @@ import android.widget.ImageView;
 
 public class SelectCity extends Activity implements View.OnClickListener {
 
-    private ImageView mBackBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ImageView mBackBtn;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select_city);
 
