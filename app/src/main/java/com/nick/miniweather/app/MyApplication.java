@@ -1,7 +1,6 @@
 package com.nick.miniweather.app;
 
 import android.app.Application;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 import android.util.Log;
 
@@ -30,14 +29,14 @@ public class MyApplication extends Application{
         initCityList();
     }
 
-    private void initCityList() {
+    private void  initCityList() {
         mCityList = new ArrayList<City>();
         new Thread(new Runnable() {
             @Override
             public void run() {
                 prepareCityList();
             }
-        }).start();
+        }) .start();
     }
 
     private boolean prepareCityList() {
@@ -47,19 +46,17 @@ public class MyApplication extends Application{
             i++;
             String cityName = city.getCity();
             String cityCode = city.getNumber();
-            Log.d(TAG, cityCode + ":" + cityName);
+            Log.d(TAG, cityCode +"：" + cityName);
         }
         Log.d(TAG, "i= " + i);
         return true;
     }
-
     public List<City> getCityList() {
         return mCityList;
     }
     public static MyApplication getInstance() {
         return myApplication;
     }
-
 
     private CityDB openCityDB() {
         String path = "/data"
@@ -71,13 +68,12 @@ public class MyApplication extends Application{
         File db = new File(path);
         Log.d(TAG, path);
         if (!db.exists()) {
-            String pathfolder = "/data"
+            String pathFolder = "/data"
                     + Environment.getDataDirectory().getAbsolutePath()
                     + File.separator + getPackageName()
                     + File.separator + "database1"
                     + File.separator;
-
-            File dirFirstFolder = new File(pathfolder);
+            File dirFirstFolder = new File(pathFolder);
             if (!dirFirstFolder.exists()) {
                 dirFirstFolder.mkdirs();
                 Log.i("MyApp", "mkdirs");
@@ -89,7 +85,7 @@ public class MyApplication extends Application{
                 int len = -1;
                 byte[] buffer = new byte[1024];
                 while ((len = inputStream.read(buffer)) != -1) {
-                    fileOutputStream.write(buffer, 0, len);
+                    fileOutputStream.write(buffer, 0 ,  len);
                     fileOutputStream.flush();
                 }
                 fileOutputStream.close();
@@ -97,7 +93,6 @@ public class MyApplication extends Application{
             } catch (IOException e) {
                 e.printStackTrace();
                 System.exit(0);
-
             }
         }
         return new CityDB(this, path);

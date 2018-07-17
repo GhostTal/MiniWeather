@@ -4,6 +4,7 @@
                 android:layout_height="match_parent">
 
     <RelativeLayout
+        android:id="@+id/title_top"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="#ffcd2626">
@@ -32,6 +33,34 @@
             android:text="当前城市：北京"
             android:textColor="#ffffffff"
             android:textSize="20dp"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_top">
+
+        <com.nick.miniweather.ClearEditTest
+            android:id="@+id/search_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@drawable/contact_search_box_edittext_keyword_background"
+            android:hint="搜索全国城市"
+            android:textColor="#ff000000"
+            android:textColorHint="#ffcccccc"
+            android:textSize="15sp"/>
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/search_city"
+            android:background="#ffffff">
+
+        </ListView>
+
+
     </RelativeLayout>
 
 
