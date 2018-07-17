@@ -22,15 +22,16 @@ public class CityDB {
         List<City> list = new ArrayList<City>();
         Cursor cursor = liteDatabase.rawQuery("SELECT * from " + CITY_TABLE_NAME, null);
         while (cursor.moveToNext()) {
-            String province = cursor.getString(cursor.getColumnIndex("provice"));
+            String province = cursor.getString(cursor.getColumnIndex("province"));
             String city = cursor.getString(cursor.getColumnIndex("city"));
             String number = cursor.getString(cursor.getColumnIndex("number"));
-            String allPY = cursor.getString(cursor.getColumnIndex("allPY"));
-            String allFirstPY = cursor.getString(cursor.getColumnIndex("allFirstPY"));
-            String firstPY = cursor.getString(cursor.getColumnIndex("firstPY"));
+            String allPY = cursor.getString(cursor.getColumnIndex("allpy"));
+            String allFirstPY = cursor.getString(cursor.getColumnIndex("allfirstpy"));
+            String firstPY = cursor.getString(cursor.getColumnIndex("firstpy"));
             City item = new City(province, city, number, firstPY, allPY, allFirstPY);
             list.add(item);
         }
         return list;
     }
+
 }
